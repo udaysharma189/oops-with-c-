@@ -4,9 +4,9 @@ int main (){
     int a;
     cout << sizeof(a)<<endl;
     char b;
-    cout << sizeof(b)<<endl;
+    cout<< sizeof(b)<<endl;
     float c;
-    cout << sizeof(c)<<endl;
+    cout<< sizeof(c)<<endl;
     double d;
-    cout << sizeof(d)<<endl;
+    cout<< sizeof(d)<<endl;
 }
