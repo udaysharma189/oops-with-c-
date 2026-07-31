@@ -9,4 +9,9 @@ int main (){
     cout<< sizeof(c)<<endl;
     double d;
     cout<< sizeof(d)<<endl;
+    long e;
+    cout<< sizeof(d)<<endl;
+    long long f;
+    cout<< sizeof(d)<<endl;
+
 }
