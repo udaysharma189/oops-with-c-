@@ -1,0 +1,2 @@
+//  syntax same function name but different class use same function;
+// Returntype classname :: function name (arguments){}.
