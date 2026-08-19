@@ -61,11 +61,19 @@
 
 //     return 0;
 // }
-#include <iostream>
-namespace verylongnamespace{
-    int a= 10;
-} 
-namespace vln = verylongnamespace;
+// #include <iostream>
+// namespace verylongnamespace{
+//     int a= 10;
+// } 
+// namespace vln = verylongnamespace;
+// int main(){
+//     std:: cout<<vln::a;
+// }
+#include<iostream>
+namespace first {
+    int x= 10;
+}
+using namespace first;
 int main(){
-    std:: cout<<vln::a;
+    std::cout<< x;
 }
