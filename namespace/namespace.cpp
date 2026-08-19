@@ -31,33 +31,41 @@
 
 //     return 0;
 // }
+// #include <iostream>
+// using namespace std;
+
+// namespace First {
+//     int a = 10;
+
+//     void display() {
+//         cout << "First namespace" << endl;
+//         cout << "a = " << a << endl;
+//     }
+// }
+
+// namespace Second {
+//     int b = 20;
+
+//     void show() {
+//         cout << "Second namespace" << endl;
+//         cout << "b = " << b << endl;
+//     }
+// }
+
+// int main() {
+//     cout << First::a << endl;
+//     First::display();
+
+//     cout << Second::b << endl;
+//     Second::show();
+
+//     return 0;
+// }
 #include <iostream>
-using namespace std;
-
-namespace First {
-    int a = 10;
-
-    void display() {
-        cout << "First namespace" << endl;
-        cout << "a = " << a << endl;
-    }
-}
-
-namespace Second {
-    int b = 20;
-
-    void show() {
-        cout << "Second namespace" << endl;
-        cout << "b = " << b << endl;
-    }
-}
-
-int main() {
-    cout << First::a << endl;
-    First::display();
-
-    cout << Second::b << endl;
-    Second::show();
-
-    return 0;
+namespace verylongnamespace{
+    int a= 10;
+} 
+namespace vln = verylongnamespace;
+int main(){
+    std:: cout<<vln::a;
 }
