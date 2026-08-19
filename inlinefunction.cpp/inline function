@@ -1,0 +1,49 @@
+#include <iostream>
+using namespace std;
+
+class student
+{
+    int r;
+    string name;
+
+public:
+    void getdata(int, string);
+    void display();
+};
+
+void student::getdata(int r1, string n)
+{
+    r = r1;
+    name = n;
+}
+
+ inline void student::display()
+{
+    cout << "Roll No: " << r << endl;
+    cout << "Name: " << name << endl;
+}
+
+int main()
+{
+    student s[2];
+
+    int r2;
+    string n2;
+
+    for (int i = 0; i < 2; i++)
+    {
+        cout << "Enter roll no and name: ";
+        cin >> r2 >> n2;
+
+        s[i].getdata(r2, n2);
+    }
+
+    cout << "\nStudent Details:\n";
+
+    for (int i = 0; i < 2; i++)
+    {
+        s[i].display();
+    }
+
+    return 0;
+}
