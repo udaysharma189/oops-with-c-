@@ -6,8 +6,6 @@ void swapNum(int a, int b)
     int temp = a;
     a = b;
     b = temp;
-
-    cout << "Inside function: a = " << a << ", b = " << b << endl;
 }
 
 int main()
@@ -17,11 +15,9 @@ int main()
     cout << "Enter two numbers: ";
     cin >> a >> b;
 
-    cout << "Before swap: a = " << a << ", b = " << b << endl;
-
     swapNum(a, b);
 
-    cout << "After swap: a = " << a << ", b = " << b << endl;
+    cout << a << " " << b << endl;
 
     return 0;
 }
