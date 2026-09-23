@@ -51,3 +51,4 @@ int main(){
 
     return 0;
 }
+// class to another class function calling is also a example of friend function.
