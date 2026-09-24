@@ -1,3 +1,4 @@
+// other class member making friend to another class using constructor
 #include <iostream>
 using namespace std;
 
