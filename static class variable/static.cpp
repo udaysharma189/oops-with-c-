@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-
+//*********** public static variable *********
 // class Item {
 // public:
 //     static int count;
@@ -24,6 +24,7 @@ using namespace std;
 //     item::show();
 //     return 0;
 // }
+//*********** both method used******** 
 class Example{
     int a;
     static int n;
@@ -44,9 +45,9 @@ void Example::display(){
     cout<<"n="<<n<<endl;
 }
 int main(){
-    Example E1,E2;
-    E1.getdata(10);
-    E2.getdata(20);
+    Example E1;
+    E1.getdata(100);
+    E1.show();
     Example::display();
     return 0;
 }
