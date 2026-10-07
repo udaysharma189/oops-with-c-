@@ -62,7 +62,7 @@ int main()
     e.Adisplay();
     t.Bdisplay();
 
-    cout << "The sum of a and b is: " << sum(e, t) << endl;
+    cout << "The sum of a and b is: " << sum(e, t) << endl;// friend function normal function ki trah call hota hai but usme object pass hote hai 
 
     return 0;
 }

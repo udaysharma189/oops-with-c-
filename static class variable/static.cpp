@@ -49,5 +49,6 @@ int main(){
     E1.getdata(100);
     E1.show();
     Example::display();
+    E1.display();// karna nahi hai kar sakta hai but static function ko object ke through call karna galat hai
     return 0;
 }
