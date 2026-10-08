@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABES Placement Portal</title>
+    
+    <!-- 🎨 INTEGRATED CSS STYLING -->
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0; 
+            background-color: #f4f6f9; 
+            color: #333;
+        }
+        header {
+            background-color: #0d47a1; 
+            color: white;
+            text-align: center; 
+            padding: 2rem 1rem; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .container {
+            max-width: 1100px; 
+            margin: 2rem auto; 
+            padding: 0 1rem;
+        }
+        .grid-container {
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        .job-card {
+            background: white; 
+            border-radius: 8px; 
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+            border-left: 5px solid #0d47a1;
+        }
+        .badge {
+            background-color: #e3f2fd; 
+            color: #0d47a1; 
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px; 
+            font-size: 0.85rem; 
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+        form {
+            background: white; 
+            padding: 2rem; 
+            border-radius: 8px;
+            max-width: 500px; 
+            margin-top: 2rem; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .form-group { 
+            margin-bottom: 1.25rem; 
+        }
+        .form-group label { 
+            display: block; 
+            margin-bottom: 0.5rem; 
+            font-weight: 600; 
+        }
+        .form-group input {
+            width: 100%; 
+            padding: 0.75rem; 
+            border: 1px solid #ccc; 
+            border-radius: 4px; 
+            box-sizing: border-box;
+        }
+        .btn-submit {
+            width: 100%; 
+            padding: 0.75rem; 
+            background: #2e7d32; 
+            color: white;
+            border: none; 
+            font-size: 1rem; 
+            cursor: pointer; 
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .btn-submit:hover { 
+            background: #1b5e20; 
+        }
+        .success-text { 
+            color: #2e7d32; 
+            margin-top: 1rem; 
+            font-weight: bold; 
+        }
+        .error-text { 
+            color: #c62828; 
+            margin-top: 1rem; 
+            font-weight: bold; 
+        }
+        .error {
+            color: #c62828;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>ABES Engg College Placement Cell</h1>
+        <p>Drive Your Career Forward</p>
+    </header>
+
+    <main class="container">
+        <!-- Job Openings Section -->
+        <section class="jobs-section">
+            <h2>Current Job Openings</h2>
+            <div id="jobs-container" class="grid-container">
+                <p>Loading active drives...</p>
+            </div>
+        </section>
+
+        <!-- Application Form Section -->
+        <section class="form-section">
+            <h2>Apply for a Drive</h2>
+            <form id="apply-form">
+                <div class="form-group">
+                    <label for="studentName">Full Name</label>
+                    <input type="text" id="studentName" required placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="studentEmail">College Email</label>
+                    <input type="email" id="studentEmail" required placeholder="username@abes.ac.in">
+                </div>
+                <div class="form-group">
+                    <label for="jobId">Select Job ID</label>
+                    <input type="text" id="jobId" required placeholder="e.g., JOB-101">
+                </div>
+                <div class="form-group">
+                    <label for="resumeLink">Drive/Resume Link</label>
+                    <input type="url" id="resumeLink" required placeholder="https://google.com...">
+                </div>
+                <button type="submit" class="btn-submit">Submit Application</button>
+            </form>
+            <div id="form-message"></div>
+        </section>
+    </main>
+
+    <!-- ⚡ INTEGRATED JAVASCRIPT LOGIC -->
+    <script>
+        // Next.js Backend Endpoints Connection URL
+        const BACKEND_URL = 'http://localhost:3000/api';
+
+        // 1. Next.js Backend se Jobs fetch karne ka dynamic logic
+        async function fetchJobs() {
+            const container = document.getElementById('jobs-container');
+            try {
+                const response = await fetch(`${BACKEND_URL}/jobs`);
+                const jobs = await response.json();
+                
+                container.innerHTML = ''; // Loading placeholder hatane ke liye
+                jobs.forEach(job => {
+                    const card = document.createElement('div');
+                    card.className = 'job-card';
+                    card.innerHTML = `
+                        <h3>${job.role}</h3>
+                        <p><strong>Company:</strong> ${job.company}</p>
+                        <p><strong>Package:</strong> ${job.ctc}</p>
+                        <p><strong>Job ID:</strong> <code>${job.id}</code></p>
+                        <span class="badge">${job.status}</span>
+                    `;
+                    container.appendChild(card);
+                });
+            } catch (error) {
+                container.innerHTML = '<p class="error">Failed to load placement drives. Make sure your Next.js backend is active.</p>';
+            }
+        }
+
+        // 2. Form submission payload send karne ka process
+        document.getElementById('apply-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const messageDiv = document.getElementById('form-message');
+            
+            const payload = {
+                name: document.getElementById('studentName').value,
+                email: document.getElementById('studentEmail').value,
+                jobId: document.getElementById('jobId').value,
+                resume: document.getElementById('resumeLink').value
+            };
+
+            try {
+                const response = await fetch(`${BACKEND_URL}/applications`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                const result = await response.json();
+                if (response.ok) {
+                    messageDiv.className = 'success-text';
+                    messageDiv.innerText = `Success! Application ID: ${result.applicationId}`;
+                    document.getElementById('apply-form').reset();
+                } else {
+                    throw new Error(result.message || 'Submission failed');
+                }
+            } catch (error) {
+                messageDiv.className = 'error-text';
+                messageDiv.innerText = error.message;
+            }
+        });
+
+        // Window screen launch par functions load hook
+        fetchJobs();
+    </script>
+</body>
+</html>
