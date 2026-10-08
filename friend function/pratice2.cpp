@@ -1,31 +1,25 @@
 #include <iostream>
 using namespace std;
 
-class Number {
+class A {
     int a, b;
-
 public:
     void getData(int, int);
     void showData();
 
-    friend void findMax(Number);
+    friend void findMax(A);
 };
-
-// Method outside class
-void Number::getData(int x, int y)
+void A::getData(int x, int y)
 {
     a = x;
     b = y;
 }
-
-void Number::showData()
+void A::showData()
 {
     cout << "First number = " << a << endl;
     cout << "Second number = " << b << endl;
 }
-
-// Friend function
-void findMax(Number n)
+void findMax(A n)
 {
     if (n.a > n.b)
         cout << "Maximum = " << n.a << endl;
@@ -35,12 +29,10 @@ void findMax(Number n)
 
 int main()
 {
-    Number n;
+    A n;
 
     n.getData(20, 35);
     n.showData();
-
-    findMax(n);
-
+   findMax(n);
     return 0;
 }
