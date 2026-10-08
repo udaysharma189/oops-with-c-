@@ -1,3 +1,4 @@
+// Both class A and B are friend of each other. So, they can access each other's private members.
 #include<iostream>
 using namespace std;
 class B;
