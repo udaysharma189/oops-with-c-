@@ -29,7 +29,7 @@ void B::getb(int x){
 void B::showb(){
     cout<<"Value of b is: "<<b<<endl;
 }
-void A::displayB(B B1){
+void A::displayB(B B1){// declare karte time object pass karte hai 
     cout<<"Value of b is: "<<B1.b<<endl;
 }
 void B::displayA(A A1){
