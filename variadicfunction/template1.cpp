@@ -1,3 +1,4 @@
+// template code for variadic function
 #include <iostream>
 using namespace std;
 void display(){
@@ -12,4 +13,3 @@ int main(){
     display(10, 10.5, "Uday Sharma");
     return 0;
 }
-//  template code
