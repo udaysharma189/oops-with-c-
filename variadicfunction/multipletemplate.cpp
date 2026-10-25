@@ -9,4 +9,4 @@ int main(){
     display(10, 20.5);
     display(10.5, 20);
     display("Uday", "Sharma");
-}
+}//multiple template
