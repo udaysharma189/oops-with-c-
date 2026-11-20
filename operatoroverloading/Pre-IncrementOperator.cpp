@@ -17,7 +17,7 @@ public:
 };
 int main() {
     Uday A1, A2;
-    A1.getdata(5);
+    A1.getdata(10);
     A1.display();
     A2 = ++A1;
    A1.display();
