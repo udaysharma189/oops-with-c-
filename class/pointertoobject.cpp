@@ -18,6 +18,6 @@ int main(){
     Example *ptr = &E;
     cout<< ptr<<endl;
     ptr->display();// similar
-
+    (*ptr).display();// pointer name 
 
 }
