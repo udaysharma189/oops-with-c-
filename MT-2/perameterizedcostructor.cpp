@@ -13,7 +13,8 @@ class A{
     b=y;
  }
  int main(){
-    A A1(10,20);
+    // A A1(10,20); inplicite approch 
+    A A1 = A(10,20);// explicite approach
     A1.display();
 
 

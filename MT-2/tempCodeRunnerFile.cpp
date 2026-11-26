@@ -1,0 +1,1 @@
+A A1(10,20);// inplicite approch 
