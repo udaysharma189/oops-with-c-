@@ -44,4 +44,4 @@ int main() {
     Uday::displaycount();
 
     return 0;
-}
+}// used static member
